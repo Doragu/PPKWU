@@ -12,6 +12,9 @@ def handle_incomplete_route():
 
 @app.route('/rev/<text>')
 def revert_string(text):
+    if text == None:
+        return "Podany tekst jest niepoprawny."
+
     return text[::-1]
 
 if __name__ == "__main__":
