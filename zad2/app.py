@@ -12,6 +12,10 @@ text_params = {
 
 @app.route('/validate/<text>')
 def revert_string(text):
+    for item in text:
+        if item.islower():
+            text_params["lower"] = text_params["lower"] + 1
+
     return json.dumps(text_params)
 
 if __name__ == "__main__":
