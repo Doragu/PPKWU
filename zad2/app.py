@@ -10,7 +10,8 @@ def revert_string(text):
         "upper": 0,
         "lower": 0,
         "numbers": 0,
-        "special": 0
+        "special": 0,
+        "length": len(text)
     }
     
     for item in text:
@@ -23,7 +24,7 @@ def revert_string(text):
         elif item.isalnum() == False:
             text_params["special"] = text_params["special"] + 1
 
-    if 0 not in text_params.values():
+    if 0 not in text_params.values() and len(text) > 8:
         text_params["is_valid"] = True
     else:
         text_params["is_valid"] = False
