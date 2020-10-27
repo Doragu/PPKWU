@@ -19,6 +19,8 @@ def revert_string(text):
             text_params["upper"] = text_params["upper"] + 1
         elif item.isnumeric():
             text_params["numbers"] = text_params["numbers"] + 1
+        elif item.isalnum() == False:
+            text_params["special"] = text_params["special"] + 1
 
     return json.dumps(text_params)
 
