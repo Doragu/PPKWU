@@ -23,7 +23,13 @@ def revert_string(text):
         elif item.isalnum() == False:
             text_params["special"] = text_params["special"] + 1
 
+    if 0 not in text_params.values():
+        text_params["is_valid"] = True
+    else:
+        text_params["is_valid"] = False
+
     return json.dumps(text_params)
+
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=8888, debug=True) 
