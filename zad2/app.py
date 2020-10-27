@@ -15,6 +15,8 @@ def revert_string(text):
     for item in text:
         if item.islower():
             text_params["lower"] = text_params["lower"] + 1
+        elif item.isupper():
+            text_params["upper"] = text_params["upper"] + 1
 
     return json.dumps(text_params)
 
