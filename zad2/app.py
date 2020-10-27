@@ -1,7 +1,9 @@
 from flask import Flask
 import json
 
+
 app = Flask(__name__)
+MIN_LENGTH = 8
 
 
 def get_parameters_based_on_text(text):
@@ -26,14 +28,17 @@ def get_parameters_based_on_text(text):
     return text_params
 
 
+def check_if_text_valid(text_params):
+    if 0 not in text_params.values() and len(text_params["length"]) > MIN_LENGTH:
+        return True
+        
+    return False
+
+
 @app.route('/validate/<text>')
 def revert_string(text):
     text_params = get_parameters_based_on_text(text)
-
-    if 0 not in text_params.values() and len(text) > 8:
-        text_params["is_valid"] = True
-    else:
-        text_params["is_valid"] = False
+    text_params["is_valid"] = check_if_text_valid
 
     return json.dumps(text_params)
 
