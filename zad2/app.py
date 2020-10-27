@@ -4,8 +4,7 @@ import json
 app = Flask(__name__)
 
 
-@app.route('/validate/<text>')
-def revert_string(text):
+def get_parameters_based_on_text(text):
     text_params = {
         "upper": 0,
         "lower": 0,
@@ -13,7 +12,7 @@ def revert_string(text):
         "special": 0,
         "length": len(text)
     }
-    
+
     for item in text:
         if item.islower():
             text_params["lower"] = text_params["lower"] + 1
@@ -23,6 +22,13 @@ def revert_string(text):
             text_params["numbers"] = text_params["numbers"] + 1
         elif item.isalnum() == False:
             text_params["special"] = text_params["special"] + 1
+
+    return text_params
+
+
+@app.route('/validate/<text>')
+def revert_string(text):
+    text_params = get_parameters_based_on_text(text)
 
     if 0 not in text_params.values() and len(text) > 8:
         text_params["is_valid"] = True
