@@ -29,7 +29,7 @@ def get_parameters_based_on_text(text):
 
 
 def check_if_text_valid(text_params):
-    if 0 not in text_params.values() and len(text_params["length"]) > MIN_LENGTH:
+    if 0 not in text_params.values() and len(text_params["length"]) >= MIN_LENGTH:
         return True
         
     return False
