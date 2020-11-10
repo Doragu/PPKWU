@@ -7,7 +7,11 @@ app = Flask(__name__)
 def get_calendar_events(html):
     soup = BeautifulSoup(html, 'html.parser')
 
-    print(soup.prettify())
+    for item in soup.find_all('a'):
+        if "class" in item.attrs and "active" in item["class"]:
+            print(item)
+
+    
     return []
 
 @app.route('/calendar/<year>/<month>')
