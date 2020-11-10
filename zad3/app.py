@@ -1,9 +1,13 @@
 from flask import Flask
 import requests
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
 def get_calendar_events(html):
+    soup = BeautifulSoup(html, 'html.parser')
+
+    print(soup.prettify())
     return []
 
 @app.route('/calendar/<year>/<month>')
