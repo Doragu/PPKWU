@@ -1,4 +1,5 @@
 from flask import Flask
+import requests
 
 app = Flask(__name__)
 
@@ -15,7 +16,9 @@ def generate_calendar():
 
 @app.route('/calendar/<year>/<month>')
 def generate_WEEIA_calendar(year, month):
-    return year
+    request_URI = f"http://www.weeia.p.lodz.pl/pliki_strony_kontroler/kalendarz.php?rok={year}&miesiac={month}&lang=1"
+
+    return requests.get(request_URI).text
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=8888, debug=True)  
