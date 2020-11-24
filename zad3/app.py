@@ -4,15 +4,28 @@ from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
+class Event:
+    date = 0
+    name = ""
+
 def get_calendar_events(html):
     soup = BeautifulSoup(html, 'html.parser')
 
+    # print(soup.prettify())
+    events = []
+
     for item in soup.find_all('a'):
         if "class" in item.attrs and "active" in item["class"]:
-            print(item)
+            temp = Eveny()
+            temp.date = item.get_text()
+            events.append(temp)
 
-    
-    return []
+    i = 0
+    for item in soup.find_all('p'):
+        events[i].name = item.get_text()
+        i += 1
+
+    return events
 
 @app.route('/calendar/<year>/<month>')
 def generate_WEEIA_calendar(year, month):
