@@ -16,7 +16,7 @@ def get_calendar_events(html):
 
     for item in soup.find_all('a'):
         if "class" in item.attrs and "active" in item["class"]:
-            temp = Eveny()
+            temp = Event()
             temp.date = item.get_text()
             events.append(temp)
 
@@ -34,8 +34,11 @@ def generate_WEEIA_calendar(year, month):
     request_URI = f"http://www.weeia.p.lodz.pl/pliki_strony_kontroler/kalendarz.php?rok={year}&miesiac={month}&lang=1"
     
     for event in get_calendar_events(requests.get(request_URI).text):
-        pass
-
+        cal_content += "BEGIN:VEVENT\n"
+        cal_content += f"DTSTART:{year}{month}{event.date}T000000Z\n"
+        cal_content += f"DTEND:{year}{month}{event.date}T235959Z\n"
+        cal_content += "END:VEVENT\n"
+        
     cal_content += "END:VCALENDAR"
 
     return cal_content
