@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_file
 import requests
 from bs4 import BeautifulSoup
 
@@ -30,9 +30,14 @@ def get_calendar_events(html):
     return events
 
 def save_file(content, month, year):
-    f = open(f"generated_files/calendar_{month}_{year}.ics", "w")
+    filename = f"calendar_{month}_{year}.ics"
+    path = f"generated_files/{filename}"
+
+    f = open(path, "w", encoding="utf-8")
     f.write(content)
     f.close()
+
+    return filename, path
 
 @app.route('/calendar/<year>/<month>')
 def generate_WEEIA_calendar(year, month):
@@ -49,9 +54,11 @@ def generate_WEEIA_calendar(year, month):
         
     cal_content += "END:VCALENDAR"
 
-    save_file(cal_content, month, year)
+    filename, path = save_file(cal_content, month, year)
 
-    return cal_content
+    print(filename)
+    print(path)
+    return send_file(path)
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=8888, debug=True)  
