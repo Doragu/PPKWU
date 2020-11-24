@@ -48,8 +48,8 @@ def generate_WEEIA_calendar(year, month):
     
     for event in get_calendar_events(requests.get(request_URI).text):
         cal_content += "BEGIN:VEVENT\n"
-        cal_content += f"DTSTART:{year}{month}{event.date}T000000Z\n"
-        cal_content += f"DTEND:{year}{month}{event.date}T235959Z\n"
+        cal_content += f"DTSTART:{year}{month}{event.date}T000000\n"
+        cal_content += f"DTEND:{year}{month}{event.date}T235959\n"
         cal_content += f"SUMMARY:{event.name}\n"
         cal_content += "END:VEVENT\n"
         
