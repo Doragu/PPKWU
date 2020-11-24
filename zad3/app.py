@@ -4,14 +4,14 @@ from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
+
 class Event:
     date = 0
     name = ""
 
+
 def get_calendar_events(html):
     soup = BeautifulSoup(html, 'html.parser')
-
-    print(soup.prettify())
     events = []
 
     for item in soup.find_all('a'):
@@ -20,7 +20,6 @@ def get_calendar_events(html):
             temp.date = item.get_text()
             events.append(temp)
 
-
     i = 0
     for item in soup.find_all('div'):
         if "class" in item.attrs and "InnerBox" in item["class"]:
@@ -28,6 +27,7 @@ def get_calendar_events(html):
             i += 1
 
     return events
+
 
 def save_file(content, month, year):
     filename = f"calendar_{month}_{year}.ics"
@@ -38,6 +38,7 @@ def save_file(content, month, year):
     f.close()
 
     return filename, path
+
 
 @app.route('/calendar/<year>/<month>')
 def generate_WEEIA_calendar(year, month):
@@ -56,9 +57,8 @@ def generate_WEEIA_calendar(year, month):
 
     filename, path = save_file(cal_content, month, year)
 
-    print(filename)
-    print(path)
-    return send_file(path)
+    return send_file(path, attachment_filename=filename)
+
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=8888, debug=True)  
+    app.run(host='127.0.0.1', port=8888)  
