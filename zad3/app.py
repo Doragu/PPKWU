@@ -29,6 +29,11 @@ def get_calendar_events(html):
 
     return events
 
+def save_file(content, month, year):
+    f = open(f"generated_files/calendar_{month}_{year}.ics", "w")
+    f.write(content)
+    f.close()
+
 @app.route('/calendar/<year>/<month>')
 def generate_WEEIA_calendar(year, month):
     cal_content = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//PPKWU/ZAD3//EN\n"
@@ -43,6 +48,8 @@ def generate_WEEIA_calendar(year, month):
         cal_content += "END:VEVENT\n"
         
     cal_content += "END:VCALENDAR"
+
+    save_file(cal_content, month, year)
 
     return cal_content
 
