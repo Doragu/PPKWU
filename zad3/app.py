@@ -11,7 +11,7 @@ class Event:
 def get_calendar_events(html):
     soup = BeautifulSoup(html, 'html.parser')
 
-    # print(soup.prettify())
+    print(soup.prettify())
     events = []
 
     for item in soup.find_all('a'):
@@ -20,10 +20,12 @@ def get_calendar_events(html):
             temp.date = item.get_text()
             events.append(temp)
 
+
     i = 0
-    for item in soup.find_all('p'):
-        events[i].name = item.get_text()
-        i += 1
+    for item in soup.find_all('div'):
+        if "class" in item.attrs and "InnerBox" in item["class"]:
+            events[i].name = item.get_text()
+            i += 1
 
     return events
 
@@ -37,6 +39,7 @@ def generate_WEEIA_calendar(year, month):
         cal_content += "BEGIN:VEVENT\n"
         cal_content += f"DTSTART:{year}{month}{event.date}T000000Z\n"
         cal_content += f"DTEND:{year}{month}{event.date}T235959Z\n"
+        cal_content += f"SUMMARY:{event.name}\n"
         cal_content += "END:VEVENT\n"
         
     cal_content += "END:VCALENDAR"
