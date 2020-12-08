@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import requests
 
 app = Flask(__name__)
 
@@ -11,7 +12,10 @@ def search():
     if request.method == "POST":
         data = request.form
 
-        print(data.get("searched"))
+        searchedValue = data.get("searched")
+        request_URI = f"https://panoramafirm.pl/szukaj?k={searchedValue}&l="
+
+        print(requests.get(request_URI).text)
 
     return render_template("index.html")
 
