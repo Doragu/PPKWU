@@ -1,11 +1,38 @@
 from flask import Flask, render_template, request
 import requests
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
+
+
+class Company:
+    name = ""
+    mail = ""
+    address = ""
+    phone_number = 0
+    webpage = ""
+
+
+def get_values_from_scrapper(html):
+    soup = BeautifulSoup(html, 'html.parser')
+    companies = []
+
+    for item in soup.find_all('li', class_="company-item"):
+        temp_soup = BeautifulSoup(str(item), 'html.parser')
+        
+        print(temp_soup.find("a", class_="company-name").get_text().strip())
+        print(temp_soup.find("a", class_="icon-telephone")["title"])
+
+        break
+    
+
+    return None
+
 
 @app.route('/')
 def main_page():
     return render_template("index.html")
+
 
 @app.route('/search', methods=["POST"])
 def search():
@@ -14,8 +41,8 @@ def search():
 
         searchedValue = data.get("searched")
         request_URI = f"https://panoramafirm.pl/szukaj?k={searchedValue}&l="
-
-        print(requests.get(request_URI).text)
+        
+        get_values_from_scrapper(requests.get(request_URI).text)
 
     return render_template("index.html")
 
