@@ -22,6 +22,9 @@ def get_values_from_scrapper(html):
         
         print(temp_soup.find("a", class_="company-name").get_text().strip())
         print(temp_soup.find("a", class_="icon-telephone")["title"])
+        print(temp_soup.find("a", class_="icon-website")["href"])
+        print(temp_soup.find("a", class_="icon-envelope")["data-company-email"])
+        print(temp_soup.find("div", class_="address").get_text().strip())
 
         break
     
