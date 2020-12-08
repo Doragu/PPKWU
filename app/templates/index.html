@@ -13,7 +13,7 @@
     <ul>
     {% if countries != None %}
         {% for company in companies %}
-            <li>{{ company.name }}</li> <a href="/generate">wygeneruj vCard</a>
+            <li>{{ company.name }}</li> <a href="/generate/{{ company.name }}">wygeneruj vCard</a>
         {% endfor %}
     {% endif %}
     </ul>

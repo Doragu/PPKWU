@@ -13,9 +13,20 @@ class Company:
         self.phone_number = phone_number
         self.webpage = webpage
         self.vcf = self.generate_vcf()
-        
+        self.save_vcf_to_file()
+
     def generate_vcf(self):
         return f"BEGIN:VCARD\nVERSION:4.0\nORG:{self.name}\nEMAIL:{self.mail}\nADR;TYPE=WORK;LABEL=\"{self.address}\"\nURL:{self.webpage}\nEND:VCARD"
+
+
+    def save_vcf_to_file(self):
+        stripped_name = self.name.replace(" ", "")
+        filename = f"{stripped_name}.vcf"
+        path = f"generated_files/{filename}"
+
+        f = open(path, "w", encoding="utf-8")
+        f.write(self.vcf)
+        f.close()
 
 
 def get_values_from_scrapper(html):
