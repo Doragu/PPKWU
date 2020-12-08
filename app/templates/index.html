@@ -9,6 +9,14 @@
         <input type="text" id="searched" name="searched">
         <button type="submit" id="searchBtn">Szukaj</button>
     </form>
+
+    <ul>
+    {% if countries != None %}
+        {% for company in companies %}
+            <li>{{ company.name }}</li>
+        {% endfor %}
+    {% endif %}
+    </ul>
 </body>
 
 </html>
