@@ -31,7 +31,7 @@
   - Link:
   `http://localhost:8888/search`
   
-  Po wpisaniu w polu formualrza "fryzjerzy" generuje taką [stronę](https://doragu.github.io/PPKWU/index.html).
+  Po wpisaniu w polu formualrza "fryzjerzy" generuje taką [stronę](https://doragu.github.io/PPKWU/index.html) (zmienione zostały linki do "wygeneruj vCard", aby działały statycznie).
   
 * `GET /generate/<nazwa firmy>`
 
