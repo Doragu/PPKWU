@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 import requests
 from bs4 import BeautifulSoup
 
@@ -69,9 +69,11 @@ def search():
     return render_template("index.html", companies = get_values_from_scrapper(requests.get(request_URI).text))
 
 
-@app.route('/generate')
-def generate_vcard():
-    return "None"
+@app.route('/generate/<company_name>')
+def generate_vcard(company_name):
+    company_name = company_name.replace(" ", "")
+
+    return send_file(f"generated_files/{company_name}.vcf", attachment_filename=f"{company_name}.vcf")
 
 
 if __name__ == "__main__":
