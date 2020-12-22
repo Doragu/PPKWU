@@ -1,7 +1,8 @@
 BEGIN:VCARD
 VERSION:4.0
 ORG:Inspiracja Studio Fryzur Ewa Lewandowska
+TEL;TYPE=work;VALUE=uri:tel:+48 665715404
 EMAIL:studiofryzurinspiracja@onet.pl
-ADR;TYPE=WORK;LABEL="ul. Moniuszki 1, 87-800 Włocławek"
+ADR;TYPE=work;LABEL="ul. Moniuszki 1, 87-800 Włocławek"
 URL:http://inspiracja-wloclawek.pl
 END:VCARD

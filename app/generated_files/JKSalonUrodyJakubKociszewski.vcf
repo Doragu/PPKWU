@@ -1,7 +1,8 @@
 BEGIN:VCARD
 VERSION:4.0
 ORG:J K Salon Urody Jakub Kociszewski
+TEL;TYPE=work;VALUE=uri:tel:+48 535077085
 EMAIL:fan12@interia.eu
-ADR;TYPE=WORK;LABEL="ul. Mozarta 10, 02-763 Warszawa"
+ADR;TYPE=work;LABEL="ul. Mozarta 10, 02-763 Warszawa"
 URL:http://www.jk-salonurody.pl
 END:VCARD

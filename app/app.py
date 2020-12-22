@@ -10,13 +10,14 @@ class Company:
         self.name = name
         self.mail = mail
         self.address = address
-        self.phone_number = phone_number
+        self.phone_number = str(phone_number).replace(" ", "")
         self.webpage = webpage
         self.vcf = self.generate_vcf()
         self.save_vcf_to_file()
 
+
     def generate_vcf(self):
-        return f"BEGIN:VCARD\nVERSION:4.0\nORG:{self.name}\nEMAIL:{self.mail}\nADR;TYPE=WORK;LABEL=\"{self.address}\"\nURL:{self.webpage}\nEND:VCARD"
+        return f"BEGIN:VCARD\nVERSION:4.0\nORG:{self.name}\nTEL;TYPE=work;VALUE=uri:tel:+48 {self.phone_number}\nEMAIL:{self.mail}\nADR;TYPE=WORK;LABEL=\"{self.address}\"\nURL:{self.webpage}\nEND:VCARD"
 
 
     def save_vcf_to_file(self):

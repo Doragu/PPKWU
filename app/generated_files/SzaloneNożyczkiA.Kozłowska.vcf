@@ -1,7 +1,8 @@
 BEGIN:VCARD
 VERSION:4.0
 ORG:Szalone Nożyczki A. Kozłowska
+TEL;TYPE=work;VALUE=uri:tel:+48 660702301
 EMAIL:kozlowska.agnieszka@o2.pl
-ADR;TYPE=WORK;LABEL="ul. Bielańska 4, 00-085 Warszawa"
+ADR;TYPE=work;LABEL="ul. Bielańska 4, 00-085 Warszawa"
 URL:http://www.agnieszkakozlowska.pl
 END:VCARD

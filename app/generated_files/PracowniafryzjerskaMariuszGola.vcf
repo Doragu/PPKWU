@@ -1,7 +1,8 @@
 BEGIN:VCARD
 VERSION:4.0
 ORG:Pracownia fryzjerska Mariusz Gola
+TEL;TYPE=work;VALUE=uri:tel:+48 781869495
 EMAIL:noir.perle.mariusz@gmail.com
-ADR;TYPE=WORK;LABEL="ul. Nowolipki 27, 01-010 Warszawa"
+ADR;TYPE=work;LABEL="ul. Nowolipki 27, 01-010 Warszawa"
 URL:http://mariuszgola.pl
 END:VCARD
