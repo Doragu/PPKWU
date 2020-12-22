@@ -3,6 +3,6 @@ VERSION:4.0
 ORG:Salon Arabeska Fryzjerstwo Paznokcie Katarzyna Liwińska
 TEL;TYPE=work;VALUE=uri:tel:+48 (22)7020068
 EMAIL:kasia.liwinska@wp.pl
-ADR;TYPE=work;LABEL="ul. Mazowiecka 84, 05-502 Bobrowiec"
+ADR;TYPE=WORK;LABEL="ul. Mazowiecka 84, 05-502 Bobrowiec"
 URL:https://salon-arabeska.business.site/
 END:VCARD

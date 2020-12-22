@@ -3,6 +3,6 @@ VERSION:4.0
 ORG:Akademia Piękna Sylwia Wójcik
 TEL;TYPE=work;VALUE=uri:tel:+48 516106264
 EMAIL:sylwia.wojcik21@gmail.com
-ADR;TYPE=work;LABEL="ul. Moniuszki 16, 05-200 Wołomin"
+ADR;TYPE=WORK;LABEL="ul. Moniuszki 16, 05-200 Wołomin"
 URL:https://www.fryzjer-kobylka.pl/
 END:VCARD

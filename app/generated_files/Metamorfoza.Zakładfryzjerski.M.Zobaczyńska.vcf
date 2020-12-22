@@ -3,6 +3,6 @@ VERSION:4.0
 ORG:Metamorfoza. Zakład fryzjerski. M. Zobaczyńska
 TEL;TYPE=work;VALUE=uri:tel:+48 608792903
 EMAIL:metamorfoza1@onet.pl
-ADR;TYPE=work;LABEL="ul. Narutowicza 1a, 96-500 Sochaczew"
+ADR;TYPE=WORK;LABEL="ul. Narutowicza 1a, 96-500 Sochaczew"
 URL:https://www.metamorfozafryzur.pl/
 END:VCARD

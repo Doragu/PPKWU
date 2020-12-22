@@ -3,6 +3,6 @@ VERSION:4.0
 ORG:Margo - Galeria Fryzur i Salon Kosmetyczny Małgorzata Krawczyk
 TEL;TYPE=work;VALUE=uri:tel:+48 664134046
 EMAIL:galeriafryzurmargo@gmail.com
-ADR;TYPE=work;LABEL="ul. W. Sławka 25, 30-633 Kraków"
+ADR;TYPE=WORK;LABEL="ul. W. Sławka 25, 30-633 Kraków"
 URL:http://www.galeriafryzurmargo.pl
 END:VCARD

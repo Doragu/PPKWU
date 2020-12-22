@@ -3,6 +3,6 @@ VERSION:4.0
 ORG:Salon Fryzjersko-perukarski Hanna Łuszcz-Wieszała
 TEL;TYPE=work;VALUE=uri:tel:+48 (32)2510181
 EMAIL:wieszala100@wp.pl
-ADR;TYPE=work;LABEL="ul. Plebiscytowa 2, 40-035 Katowice"
+ADR;TYPE=WORK;LABEL="ul. Plebiscytowa 2, 40-035 Katowice"
 URL:http://www.hannahair.pl
 END:VCARD
