@@ -1,6 +1,6 @@
 # Mobilny vCard
   
-  Aplikacja służy do wyszukiwania firm korzystając z API strony [https://panoramafirm.pl/](https://panoramafirm.pl/) oraz na generowaniu plików .vcf (vCard) na podstawie znalezionych firm.
+  Aplikacja służy do wyszukiwania firm korzystając z API strony [https://panoramafirm.pl/](https://panoramafirm.pl/) oraz do generowania plików .vcf (vCard) na podstawie znalezionych firm.
 
   Uruchamianie aplikacji następuje po wpisaniu `python app.py` po wcześniejszym pobraniu wszystkich dodatkowych bibliotek z pliku requirements.txt.
 
