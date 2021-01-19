@@ -1,3 +1,1 @@
-# PPKWU
-Repozytorium służące składowaniu zadań z przedmiotu Programowanie pod kątem wielokrotnego użycia
-Autor: Krzysztof Chybicki
+# PPKWU ZADANIE 5
