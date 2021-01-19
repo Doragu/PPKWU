@@ -1,0 +1,615 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API GUS",
+    "description": "BANK DANYCH LOKALNYCH jest największą w Polsce bazą danych o gospodarce, społeczeństwie i środowisku. Strona api https://api.stat.gov.pl/Home/BdlApi",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "https://bdl.stat.gov.pl/api/v1"
+    }
+  ],
+  "paths": {
+    "/subjects": {
+      "get": {
+        "description": "Lista tematów głównego poziomu",
+        "parameters": [
+          {
+            "name": "parent-id",
+            "in": "query",
+            "description": "Id wybranego tematu",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "P3183"
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "description": "Język danych",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "pl"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Numer strony z danymi",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          },
+          {
+            "name": "page-size",
+            "in": "query",
+            "description": "Ilość elementów na stronie",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": 20
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Format pobierania danych (json, xml)",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Udane pobranie listy tematów głównego poziomu",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "https://bdl.stat.gov.pl/api/v1"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://bdl.stat.gov.pl/api/v1"
+        }
+      ]
+    },
+    "/data/{data_type}/{data_id}": {
+      "get": {
+        "description": "Dane dla podanych danych w paramterach",
+        "parameters": [
+          {
+            "name": "data_type",
+            "in": "path",
+            "description": "Typ danych (by-unit, by-variable)",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "by-unit"
+          },
+          {
+            "name": "data_id",
+            "in": "path",
+            "description": "Numer id wybranego typu danych",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "023200000000"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "description": "Rok wybranych danych",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": 2009
+            }
+          },
+          {
+            "name": "var-id",
+            "in": "query",
+            "description": "Id wybranej zmiennej",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "3643"
+            }
+          },
+          {
+            "name": "unit-parent-id",
+            "in": "query",
+            "description": "Id wybranej jednostki wyższego poziomu",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "3643"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Format pobierania danych (json, xml)",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Udane pobranie danych dla podanych danych w paramterach",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_1"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "https://bdl.stat.gov.pl/api/v1"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://bdl.stat.gov.pl/api/v1"
+        }
+      ]
+    },
+    "/units": {
+      "get": {
+        "description": "Lista jednostek terytorialnych",
+        "parameters": [
+          {
+            "name": "level",
+            "in": "query",
+            "description": "Poziom jednostki",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": 3
+            }
+          },
+          {
+            "name": "parent-id",
+            "in": "query",
+            "description": "Numer id jednostki wyższego poziomu",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Numer strony z danymi",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          },
+          {
+            "name": "page-size",
+            "in": "query",
+            "description": "Ilość elementów na stronie",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": 20
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Format pobierania danych (json, xml)",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "xml"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Udane pobranie listy jednostek terytorialnych",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_2"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "https://bdl.stat.gov.pl/api/v1"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://bdl.stat.gov.pl/api/v1"
+        }
+      ]
+    },
+    "/variables": {
+      "get": {
+        "description": "Lista zmiennych dla wybranego tematu",
+        "parameters": [
+          {
+            "name": "level",
+            "in": "query",
+            "description": "Poziom jednostki",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": 2
+            }
+          },
+          {
+            "name": "subject-id",
+            "in": "query",
+            "description": "Numer id wybranego tematu",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Numer strony z danymi",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          },
+          {
+            "name": "page-size",
+            "in": "query",
+            "description": "Ilość elementów na stronie",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "example": 20
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Format pobierania danych (json, xml)",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "xml"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Uudane pobranie listy zmiennych dla wybranego tematu",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_3"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "servers": [
+          {
+            "url": "https://bdl.stat.gov.pl/api/v1"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://bdl.stat.gov.pl/api/v1"
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {
+      "inline_response_200": {
+        "type": "object",
+        "properties": {
+          "totalRecords": {
+            "type": "integer",
+            "example": 3100
+          },
+          "page": {
+            "type": "integer",
+            "example": 1
+          },
+          "pageSize": {
+            "type": "integer",
+            "example": 10
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "first": {
+                "type": "string",
+                "example": "https://bdl.stat.gov.pl/api/v1/Variables?page=0&page-size=10"
+              },
+              "self": {
+                "type": "string"
+              },
+              "next": {
+                "type": "string"
+              },
+              "last": {
+                "type": "string"
+              }
+            }
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "hasVariables": {
+                  "type": "boolean"
+                },
+                "children": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "levels": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "inline_response_200_1": {
+        "type": "object",
+        "properties": {
+          "totalRecords": {
+            "type": "integer"
+          },
+          "unitId": {
+            "type": "string"
+          },
+          "unitName": {
+            "type": "string"
+          },
+          "agggregateId": {
+            "type": "integer"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "measureUnitId": {
+                  "type": "integer"
+                },
+                "lastUpdate": {
+                  "type": "string"
+                },
+                "values": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "year": {
+                          "type": "string"
+                        },
+                        "val": {
+                          "type": "integer"
+                        },
+                        "attrId": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "inline_response_200_2": {
+        "type": "object",
+        "properties": {
+          "totalRecords": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "pageSize": {
+            "type": "integer"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "first": {
+                "type": "string"
+              },
+              "self": {
+                "type": "string"
+              },
+              "next": {
+                "type": "string"
+              },
+              "last": {
+                "type": "string"
+              }
+            }
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "level": {
+                  "type": "integer"
+                },
+                "hasDescription": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      "inline_response_200_3": {
+        "type": "object",
+        "properties": {
+          "totalRecords": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "pageSize": {
+            "type": "integer"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "first": {
+                "type": "string"
+              },
+              "self": {
+                "type": "string"
+              },
+              "next": {
+                "type": "string"
+              },
+              "last": {
+                "type": "string"
+              }
+            }
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "subjectId": {
+                  "type": "string"
+                },
+                "n1": {
+                  "type": "string"
+                },
+                "level": {
+                  "type": "integer"
+                },
+                "measureUnitId": {
+                  "type": "integer"
+                },
+                "measureUnitName": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
