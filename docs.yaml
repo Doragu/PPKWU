@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+    title: Open Library Read API
+    description: The Open Library Read API is intended to make it easy to turn book identifier information (ISBN, LCCN etc.) into direct links to Open Library's online-readable or borrowable books.
+    version: fb946f1
+servers:
+    - url: http://openlibrary.org/api/
+        description: Main production server
+paths:
+    volumes/brief/{id-type}/{id-value}.json:
+        get:
+            summary: Information about readable versions of a single book edition.
+            description: Optional extended description in CommonMark or HTML.
+			parameters:
+				- name: id-type
+					in: path
+					required: true
+					description: Type of a id. Can be 'isbn', 'lccn', 'oclc' or 'olid' (Open Library Identifier).
+					schema:
+						type : string
+            responses:
+                '200':
+                    description: A JSON array of user names
+                    content:
+                        application/json:
+                            schema: 
+                                type: array
+                                items: 
+                                    type: string 
